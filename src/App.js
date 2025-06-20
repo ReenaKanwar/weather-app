@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-const API_KEY = "139f69b489024dc19b9182019251906"; 
-
+const API_KEY = "139f69b489024dc19b9182019251906 "; 
 function App() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
@@ -12,7 +11,7 @@ function App() {
     if (!city.trim()) return;
 
     setLoading(true);
-    setWeatherData(null);
+    setWeatherData(null); 
 
     try {
       const response = await fetch(
