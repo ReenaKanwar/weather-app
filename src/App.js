@@ -10,21 +10,22 @@ function App() {
 
   const handleSearch = async () => {
     if (!city.trim()) return;
+
     setLoading(true);
     setWeatherData(null);
 
     try {
-      const res = await fetch(
+      const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
       );
-      const data = await res.json();
+      const data = await response.json();
 
       if (data.error) {
         alert("Failed to fetch weather data");
       } else {
         setWeatherData(data);
       }
-    } catch (err) {
+    } catch (error) {
       alert("Failed to fetch weather data");
     } finally {
       setLoading(false);
@@ -43,9 +44,11 @@ function App() {
         <button onClick={handleSearch}>Search</button>
       </div>
 
+      
       {loading && <p>Loading data…</p>}
 
-      {weatherData && (
+      
+      {!loading && weatherData && (
         <div className="weather-cards">
           <div className="weather-card">
             <h3>Temperature</h3>
